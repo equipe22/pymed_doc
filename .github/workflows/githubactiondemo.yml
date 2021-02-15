@@ -50,7 +50,7 @@ jobs:
           pip3 install sphinx Pallets-Sphinx-Themes msmb_theme sphinx-rtd-theme
           sphinx-apidoc -o . pymedextcore
           touch ./docs/.nojekyll
-      - run: sphinx-build _build docs -b dirhtml
+      - run: sphinx-build . docs -b dirhtml
  
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
