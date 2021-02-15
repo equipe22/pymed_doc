@@ -48,7 +48,7 @@ jobs:
           pip3 install lxml
           pip3 install git+https://github.com/equipe22/pymedext_core.git
           pip3 install sphinx Pallets-Sphinx-Themes
-          sphinx-apidoc -o .buildsdoc pymedext_core
+          sphinx-apidoc -o .buildsdoc pymedextcore
           touch ./docs/.nojekyll
       - run: sphinx-build buildsdoc docs -b dirhtml
 
