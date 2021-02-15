@@ -48,10 +48,10 @@ jobs:
           pip3 install lxml
           pip3 install git+https://github.com/equipe22/pymedext_core.git
           pip3 install sphinx Pallets-Sphinx-Themes
-          sphinx-apidoc -o .buildsdoc pymedextcore
+          sphinx-apidoc -o . pymedextcore
           touch ./docs/.nojekyll
-      - run: sphinx-build buildsdoc docs -b dirhtml
-
+      - run: sphinx-build _build docs -b dirhtml
+ 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
