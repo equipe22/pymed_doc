@@ -1,5 +1,5 @@
 pymedextcore
-=============
+============
 
 .. toctree::
    :maxdepth: 4
