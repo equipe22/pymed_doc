@@ -42,19 +42,17 @@ jobs:
 
       - name: Install dependencies
         run: |       
-          apt-get -y install g++ gcc git build-essential
+          sudo apt-get -y install g++ gcc git build-essential
           pip3 install --upgrade pip
-          apt-get update && apt-get install -y --allow-unauthenticated procps
-          apt-get install -y libpq-dev libffi-dev python3-dev libxml2 libxml2-dev libxslt-dev python-dev
-          apt-get install -y python3-lxml
+          sudo apt-get update && apt-get install -y --allow-unauthenticated procps
+          sudo apt-get install -y libpq-dev libffi-dev python3-dev libxml2 libxml2-dev libxslt-dev python-dev
+          sudo apt-get install -y python3-lxml python3-sphinx
           pip3 install lxml
           pip3 install git+https://github.com/equipe22/pymedext_core.git
           pip3 install sphinx Pallets-Sphinx-Themes
-          sphinx-apidoc --no-toc --module-first -o docs/autodoc src/stenotype
-          
-          pip3 install sphinx Pallets-Sphinx-Themes
+          sphinx-apidoc -o .buildsdoc pymedext_core
           touch ./docs/.nojekyll
-      - run: sphinx-build docs public -b dirhtml
+      - run: sphinx-build buildsdoc docs -b dirhtml
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
