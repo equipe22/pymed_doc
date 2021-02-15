@@ -6,8 +6,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -52,10 +50,6 @@ jobs:
           touch ./public/.nojekyll
       - run: sphinx-build _build public -b dirhtml
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+
 
 # This is a basic workflow to help you get started with Actions
