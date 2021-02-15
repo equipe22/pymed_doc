@@ -1,7 +1,7 @@
 name: github pages
 
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -41,22 +41,21 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: |       
+        run: |
           pip3 install --upgrade pip
           sudo apt-get install -y libpq-dev libffi-dev python3-dev libxml2 libxml2-dev libxslt-dev python-dev
           sudo apt-get install -y python3-lxml python3-sphinx
           pip3 install lxml
           pip3 install git+https://github.com/equipe22/pymedext_core.git
           pip3 install sphinx Pallets-Sphinx-Themes msmb_theme sphinx-rtd-theme
-          sphinx-apidoc -o . pymedextcore
-          touch ./docs/.nojekyll
-      - run: sphinx-build . docs -b dirhtml
- 
+          sphinx-apidoc -o _build pymedextcore
+          touch ./public/.nojekyll
+      - run: sphinx-build _build public -b dirhtml
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./public
 
 # This is a basic workflow to help you get started with Actions
-
