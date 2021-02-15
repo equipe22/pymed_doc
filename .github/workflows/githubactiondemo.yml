@@ -42,9 +42,7 @@ jobs:
 
       - name: Install dependencies
         run: |       
-          sudo apt-get -y install g++ gcc git build-essential
           pip3 install --upgrade pip
-          sudo apt-get update && apt-get install -y --allow-unauthenticated procps
           sudo apt-get install -y libpq-dev libffi-dev python3-dev libxml2 libxml2-dev libxslt-dev python-dev
           sudo apt-get install -y python3-lxml python3-sphinx
           pip3 install lxml
