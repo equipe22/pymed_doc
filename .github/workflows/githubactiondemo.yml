@@ -51,13 +51,10 @@ jobs:
           sphinx-build _build ./docs -b html
       #- run: cp -r _build/html public
 
-      - name: Auto commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Optional but recommended
-          # Defaults to "Apply automatic changes"
-          commit_message: automatic doc update
-          file_pattern: ./docs/*
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
 
 # This is a basic workflow to help you get started with Actions
